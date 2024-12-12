@@ -1,0 +1,27 @@
+<div class="scratch-container">
+  <div class="winning-code" *ngIf="showWinningCode()">
+    <p>🎮 Congratulations! Copy this code to Xbox Live:</p>
+    <div class="code">{{ winningCode() }}</div>
+  </div>
+
+  <div class="game-wrapper">
+    <div class="message" [class.visible]="isRevealed()">
+      <h2>{{ message() }}</h2>
+      <button class="try-again" (click)="resetGame()">Try Again</button>
+    </div>
+    
+    <div class="canvas-wrapper" [style.width.px]="canvasWidth" [style.height.px]="canvasHeight">
+      <div class="prize-content" [class.revealed]="isRevealed()">
+        <img #prizeImage 
+             [ngSrc]="currentImage().src" 
+             [width]="currentImage().width" 
+             [height]="currentImage().height" 
+             priority
+             alt="Prize" 
+             (load)="onImageLoad()" 
+             class="prize-image">
+      </div>
+      <canvas #scratchCanvas></canvas>
+    </div>
+  </div>
+</div>
