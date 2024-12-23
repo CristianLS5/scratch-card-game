@@ -32,4 +32,4 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/winter-wonderland/browser
+          folder: dist/scratch-card-game/browser
