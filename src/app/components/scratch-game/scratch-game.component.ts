@@ -1,6 +1,11 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  AfterViewInit,
+  ViewChild,
+  signal,
+} from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { environment } from '../../../environments/environment.github';
 
 interface Prize {
   src: string;
@@ -193,7 +198,7 @@ export class ScratchGameComponent implements AfterViewInit {
       this.canvasRef.nativeElement.height
     );
     this.isRevealed.set(true);
-    
+
     // Generate and show code only if it's a winning card
     if (this.currentImage().message.includes('Congratulations')) {
       this.winningCode.set(this.generateWinningCode());
@@ -202,7 +207,7 @@ export class ScratchGameComponent implements AfterViewInit {
   }
 
   private generateWinningCode(): string {
-    return environment.winningCode;
+    return '80FXD-QE7V2-256PM';
   }
 
   protected resetGame() {
