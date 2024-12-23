@@ -5,9 +5,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 interface Snowflake {
@@ -22,7 +20,7 @@ interface Snowflake {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, LoginModalComponent],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -37,10 +35,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private ctx!: CanvasRenderingContext2D;
   private snowflakes: Snowflake[] = [];
   private animationFrameId?: number;
+  private router = inject(Router);
 
-  showLoginModal = false;
-
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor() {}
 
   ngOnInit() {
     this.initializeCanvas();
@@ -134,16 +131,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  onPlayClick() {
-    this.showLoginModal = true;
-  }
-
-  onLoginSuccess() {
-    this.showLoginModal = false;
+  protected onPlayClick() {
     this.router.navigate(['/game']);
-  }
-
-  onLoginCancel() {
-    this.showLoginModal = false;
   }
 }
