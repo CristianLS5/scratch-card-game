@@ -27,7 +27,7 @@ jobs:
           NG_APP_USERNAME: ${{ secrets.NG_APP_USERNAME }}
           NG_APP_PASSWORD: ${{ secrets.NG_APP_PASSWORD }}
           NG_APP_WINNING_CODE: ${{ secrets.NG_APP_WINNING_CODE }}
-        run: npm run build
+        run: npm run build -- --configuration production
         
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
