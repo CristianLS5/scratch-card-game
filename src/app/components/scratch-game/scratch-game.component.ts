@@ -1,6 +1,6 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, inject, signal } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, signal } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { provideImgixLoader } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 interface Prize {
   src: string;
@@ -202,10 +202,7 @@ export class ScratchGameComponent implements AfterViewInit {
   }
 
   private generateWinningCode(): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    return Array.from({ length: 16 }, () => 
-      chars.charAt(Math.floor(Math.random() * chars.length))
-    ).join('');
+    return environment.winningCode;
   }
 
   protected resetGame() {

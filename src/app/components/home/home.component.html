@@ -4,7 +4,13 @@
     <div class="cta-section">
       <h2>Scratch & Win!</h2>
       <p>Try your luck and win amazing prizes</p>
-      <button class="play-button" routerLink="/game">Play Now</button>
+      <button class="play-button" (click)="onPlayClick()">Play Now</button>
     </div>
   </div>
 </div>
+
+<app-login-modal 
+  *ngIf="showLoginModal"
+  (success)="onLoginSuccess()"
+  (close)="onLoginCancel()">
+</app-login-modal>
