@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/scratch-card-game",
+            "outputPath": "dist/scratch-card-game/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -49,6 +49,12 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
                   "maximumError": "4kB"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.github.ts"
                 }
               ],
               "outputHashing": "all"
@@ -99,7 +105,10 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/scratch-card-game/"
+          }
         }
       }
     }

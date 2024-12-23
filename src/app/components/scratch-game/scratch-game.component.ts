@@ -1,6 +1,6 @@
 import { Component, ElementRef, AfterViewInit, ViewChild, signal } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.github';
 
 interface Prize {
   src: string;
