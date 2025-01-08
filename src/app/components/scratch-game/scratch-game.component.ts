@@ -207,7 +207,20 @@ export class ScratchGameComponent implements AfterViewInit {
   }
 
   private generateWinningCode(): string {
-    return '80FXD-QE7V2-256PM';
+    const segments = 3;
+    const segmentLength = 5;
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let code = '';
+
+    for (let i = 0; i < segments; i++) {
+      for (let j = 0; j < segmentLength; j++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        code += chars[randomIndex];
+      }
+      if (i < segments - 1) code += '-';
+    }
+
+    return code;
   }
 
   protected resetGame() {
